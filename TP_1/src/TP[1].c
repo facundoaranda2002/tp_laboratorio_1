@@ -36,6 +36,7 @@ int main(void) {
 				if(flagIngresarVuelos && flagKM)
 				{
 					calcularCostos(&flagCalcularCostos, &km, &aerolineas, &latam, &aerolineasDebito, &aerolineasCredito, &aerolineasBitcoin, &aerolineasPrecioUnitario, &latamDebito, &latamCredito, &latamBitcoin, &latamPrecioUnitario, &diferenciaPrecio);
+					printf("Se calcularon los costos correctamente\n");
 				}
 				else if(!flagKM)
 				{

@@ -63,7 +63,7 @@ int menu(float km, float aerolineas, float latam)
 {
     int opcion;
 
-    printf("  ***Menu de opciones***\n\n\n");
+    printf("\n\n\n***Menu de opciones***\n\n\n");
     printf("1. Ingresar kilometros:(km=%.2f)\n\n", km);
     printf("2. Ingresar Precio de Vuelos:(Aerolineas= $%.2f, Latam= $%.2f)\n\n", aerolineas, latam);
     printf("3. Calcular todos los costos\n\n");
