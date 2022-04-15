@@ -77,7 +77,7 @@ int menu(float km, float aerolineas, float latam)
 
 void ingresarKM(int* pFlag, float* pKM)
 {
-    utn_getNumeroFloat(* &pKM, "Ingrese los kilometros: ", "Error\n", 100, 10000);
+    utn_getNumeroFloat(* &pKM, "Ingrese los kilometros: ", "Error\n", 100, 20000);
     *pFlag=1;
 }
 
