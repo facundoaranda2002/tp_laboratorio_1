@@ -16,7 +16,7 @@ int menu()
     printf("4- Informes\n");
     printf("5- Hardcodear Pasajeros\n");
     printf("6- Salir\n");
-    utn_getNumeroInt(&opcion, "Ingrese opcion: ", "Error. Opcion invalida. ", 1, 7);
+    utn_getNumeroInt(&opcion, "Ingrese opcion: ", "Error. Opcion invalida. ", 1, 6);
     return opcion;
 }
 
