@@ -1,0 +1,17 @@
+/** \brief Parsea los datos los datos de los pasajeros desde el archivo data.csv (modo texto).
+ *
+ * \param pFile char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int 1 si todo OK, 0 si hubo algun error
+ *
+ */
+int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger);
+
+/** \brief Parsea los datos los datos de los pasajeros desde el archivo datos.bin (modo binario).
+ *
+ * \param pFile char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int 1 si todo OK, 0 si hubo algun error
+ *
+ */
+int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger);
