@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "ArrayPassenger.h"
 #include "validaciones.h"
@@ -62,9 +63,13 @@ int altaPasajero(ePassenger vec[], int tam, eFlycode vuelos[], int tamVuelos, in
     {
         printf("\n\n");
 
-        utn_getCadenaChar(nuevoPasajero.name, "Ingrese el nombre del pasajero: ", "Error. Nombre demasiado largo. ", 1, 51);
+        utn_getCadenaCharLetras(nuevoPasajero.name, "Ingrese el nombre del pasajero(solo letras): ", "Error. Nombre demasiado largo o caracteres invalidos. ", 1, 51);
+        strlwr(nuevoPasajero.name);
+		(nuevoPasajero.name)[0] = toupper((nuevoPasajero.name)[0]);
 
-        utn_getCadenaChar(nuevoPasajero.lastName, "Ingrese el apellido del pasajero: ", "Error. Apellido demasiado largo. ", 1, 51);
+        utn_getCadenaCharLetras(nuevoPasajero.lastName, "Ingrese el apellido del pasajero(solo letras): ", "Error. Apellido demasiado largo o caracteres invalidos. ", 1, 51);
+        strlwr(nuevoPasajero.lastName);
+		(nuevoPasajero.lastName)[0] = toupper((nuevoPasajero.lastName)[0]);
 
         utn_getNumeroFloat(&nuevoPasajero.price, "Ingrese el precio del vuelo(5000-500000): ", "Error. Precio Invalido. ", 5000, 500000);
 
@@ -224,7 +229,7 @@ int hardcodearPasajeros(ePassenger vec[], int tam, int cant, int* pId)
         {0, "Juan", "Lopez", 7000, "ABCD5522", 5000,0},
         {0, "Juana", "Lopez", 8000, "ABCD5511", 5001,0},
         {0, "Juanito", "Garcia", 6000, "ABCD5533", 5002,0},
-        {0, "Juan Carlos", "Lopez", 7000, "ABCD5544", 5003,0},
+        {0, "Carlos", "Lopez", 7000, "ABCD5544", 5003,0},
         {0, "Juanfran", "Garcia", 7000, "ABCD5555", 5000,0}
     };
 
@@ -265,46 +270,55 @@ int modificarPasajero(ePassenger vec[], int tam, eFlycode vuelos[], int tamVuelo
         }
         else
         {
-            system("cls");
-            printf("   Id               Nombre          Apellido   Precio de Vuelo  Tipo de pasajero  Codigo de Vuelo  Estado del Vuelo\n");
-            printf("---------------------------------------------------------------------------------------------------------------------\n");
-            cargarDescripcionTipoPasajero(vec[indice].typePassenger, desc);
-            cargarDescripcionEstado(vuelos, tamVuelos, estado, vec[indice].flycode);
-            printf("   %5d    %15s   %15s   %.2f  %25s  %10s  %15s\n", vec[indice].id, vec[indice].name, vec[indice].lastName, vec[indice].price, desc, vec[indice].flycode, estado);
             do
             {
+            	system("cls");
+				printf("   Id               Nombre          Apellido   Precio de Vuelo  Tipo de pasajero  Codigo de Vuelo  Estado del Vuelo\n");
+				printf("---------------------------------------------------------------------------------------------------------------------\n");
+				cargarDescripcionTipoPasajero(vec[indice].typePassenger, desc);
+				cargarDescripcionEstado(vuelos, tamVuelos, estado, vec[indice].flycode);
+				printf("   %5d    %15s   %15s   %.2f  %25s  %10s  %15s\n", vec[indice].id, vec[indice].name, vec[indice].lastName, vec[indice].price, desc, vec[indice].flycode, estado);
                 printf("\n\n");
                 switch(menuModificarPasajero())
                 {
                 case 1:
-                    utn_getCadenaChar(auxPassenger.name, "Ingrese el nuevo nombre del pasajero: ", "Error. Nombre demasiado largo. ", 1, 51);
+                    utn_getCadenaCharLetras(auxPassenger.name, "Ingrese el nuevo nombre del pasajero(solo letras): ", "Error. Nombre demasiado largo o caracteres invalidos. ", 1, 51);
+                    strlwr(auxPassenger.name);
+					(auxPassenger.name)[0] = toupper((auxPassenger.name)[0]);
                     strcpy(vec[indice].name, auxPassenger.name);
                     printf("Se ha modificado el nombre\n");
                     printf("\n\n");
+                    system("pause");
                     break;
                 case 2:
-                    utn_getCadenaChar(auxPassenger.lastName, "Ingrese el nuevo apellido del pasajero: ", "Error. Apellido demasiado largo. ", 1, 51);
+                    utn_getCadenaCharLetras(auxPassenger.lastName, "Ingrese el nuevo apellido del pasajero(solo letras): ", "Error. Apellido demasiado largo o caracteres invalidos. ", 1, 51);
+                    strlwr(auxPassenger.lastName);
+					(auxPassenger.lastName)[0] = toupper((auxPassenger.lastName)[0]);
                     strcpy(vec[indice].lastName, auxPassenger.lastName);
                     printf("Se ha modificado el apellido\n");
                     printf("\n\n");
+                    system("pause");
                     break;
                 case 3:
                     utn_getNumeroFloat(&auxPassenger.price, "Ingrese el nuevo precio del vuelo(5000-500000): ", "Error. Precio Invalido. ", 5000, 500000);
                     vec[indice].price=auxPassenger.price;
                     printf("Se ha modificado el precio\n");
                     printf("\n\n");
+                    system("pause");
                     break;
                 case 4:
                     utn_getTypePassengerMod(&auxPassenger.typePassenger);
                     vec[indice].typePassenger=auxPassenger.typePassenger;
                     printf("Se ha modificado el tipo de pasajero\n");
                     printf("\n\n");
+                    system("pause");
                     break;
                 case 5:
                     utn_getFlyCodeMod(vuelos, tamVuelos, auxPassenger.flycode);
                     strcpy(vec[indice].flycode, auxPassenger.flycode);
                     printf("Se ha modificado el codigo de vuelo\n");
                     printf("\n\n");
+                    system("pause");
                     break;
                 case 6:
                     salir='s';
@@ -686,3 +700,4 @@ int sortPassengersById(ePassenger vec[], int tam)
     }
     return todoOk;
 }
+

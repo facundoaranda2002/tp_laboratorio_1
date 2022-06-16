@@ -52,3 +52,15 @@ int utn_getCadenaChar(char pResultado[], char* mensaje, char* mensajeError, int 
  *
  */
 int utn_getRespuesta(char* pResultado, char* mensaje, char* mensajeError);
+
+/** \brief permite al usuario ingresar una cadena de caracteres, y valida que se encuentre entre el maximo y el minimo de longitud y que sean solo letras
+ *
+ * \param pResultado float* es donde se guarda la cadena de caracteres ingresada
+ * \param mensaje char* es el mensaje que pide el ingreso del dato
+ * \param mensajeError char* es el mensaje que indica al usuario que hubo un error al ingresar el dato
+ * \param minimo int es el valor minimo de longitud de cadena que se le deja ingresar al usuario
+ * \param maximo int es el valor maximo de longitud de cadena que se le deja ingresar al usuario
+ * \return int devuelve 1 si no hubo problemas con los punteros y 0 si si los hubo
+ *
+ */
+int utn_getCadenaCharLetras(char pResultado[], char* mensaje, char* mensajeError, int minimo, int maximo);

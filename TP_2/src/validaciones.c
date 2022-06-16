@@ -141,3 +141,51 @@ int utn_getRespuesta(char* pResultado, char* mensaje, char* mensajeError)
     }
     return todoOk;
 }
+
+int utn_getCadenaCharLetras(char pResultado[], char* mensaje, char* mensajeError, int minimo, int maximo)
+{
+    int todoOk=0;
+    char auxCad[100];
+    int resultadoScanF=0;
+    if(pResultado!=NULL && mensaje!=NULL && mensajeError!=NULL)
+    {
+       do
+        {
+            printf(mensaje);
+            fflush(stdin);
+            gets(auxCad);
+
+            if((strlen(auxCad) >= minimo) && (strlen(auxCad) < maximo))
+            {
+            	for(int i=0; i<strlen(auxCad); i++)
+            	{
+            		if(!isalpha(auxCad[i]))
+            		{
+            			fflush(stdin);
+            			printf(mensajeError);
+            			resultadoScanF=0;
+            			break;
+            		}
+            		else
+            		{
+            			resultadoScanF=1;
+            		}
+            	}
+                if(resultadoScanF==1)
+                {
+                	strcpy(pResultado, auxCad);
+                }
+            }
+            else
+            {
+                fflush(stdin);
+                printf(mensajeError);
+            }
+
+        }
+        while(resultadoScanF!=1);
+        todoOk=1;
+    }
+    return todoOk;
+}
+
