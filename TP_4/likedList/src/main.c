@@ -32,12 +32,14 @@ int main(void)
 	setbuf(stdout,NULL);
 	int proxId;
 	Passenger* nuevoPasajero=NULL;
+	Passenger* nuevoPasajeroNodo=NULL;
 	Passenger* pasajeroAMostrar=NULL;
 	Passenger* pasajeroAModificar=NULL;
 	Passenger* pasajeroIndexOf=NULL;
 	Passenger* pasajeroPush=NULL;
 	Passenger* pasajeroPop=NULL;
 	Passenger* pasajeroContains=NULL;
+	Node* nodo=NULL;
 
 
 	printf("------ll_newLinkedList------\n\n");
@@ -92,11 +94,32 @@ int main(void)
 	system("pause");
 	system("cls");
 
+	printf("------test_addNode------\n\n");
+	buscarMayorId(lista, &proxId);
+	nuevoPasajeroNodo=Passenger_newParametros(proxId, "Ricardo", "Perez", 13000, "ABDD11", 2, 2);
+	test_addNode(lista, proxId-1, nuevoPasajeroNodo);
+	printf("Pasajero agregado\n");
+	printf("Tamanio de la lista: %d\n", ll_len(lista));
+	printf("\n\n");
+	controller_ListPassenger(lista);
+	printf("\n\n");
+	system("pause");
+	system("cls");
+
 	printf("------ll_get------\n\n");
 	pasajeroAMostrar=(Passenger*)ll_get(lista, 2);
 	printf("Pasajero en la posicion 2: \n");
 	printf("  id          name       lastname      price       flycode  typePassenger     statusFlight\n");
 	mostrarPasajero(pasajeroAMostrar);
+	printf("\n\n");
+	system("pause");
+	system("cls");
+
+	printf("------test_getNode------\n\n");
+	nodo=test_getNode(lista, 3);
+	printf("Pasajero en la posicion 3: \n");
+	printf("  id          name       lastname      price       flycode  typePassenger     statusFlight\n");
+	mostrarPasajero(nodo->pElement);
 	printf("\n\n");
 	system("pause");
 	system("cls");
